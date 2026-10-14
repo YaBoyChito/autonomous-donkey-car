@@ -1,19 +1,20 @@
-"""Autonomous driving entry point for running a trained model on the RC car."""
+"""Autonomous drive entry point scaffold for the trained model."""
+
+from __future__ import annotations
+
+from pathlib import Path
 
 from config import DEFAULT_CONFIG
 
 
 def drive() -> None:
-    """Placeholder autonomous driving routine.
+    """Explain the runtime workflow for autonomous inference."""
+    models_dir = DEFAULT_CONFIG.models_dir
+    models_dir.mkdir(parents=True, exist_ok=True)
 
-    In a full implementation, this function would:
-    - load a trained model
-    - capture frames from the camera
-    - run inference
-    - send steering/throttle commands to the vehicle controller
-    """
-    print("TODO: connect to the RC car hardware and camera stream.")
-    print(f"Configured model directory: {DEFAULT_CONFIG.models_dir}")
+    print(f"Model directory: {models_dir}")
+    print("TODO: load the trained Keras model and stream frames from the onboard camera.")
+    print("TODO: convert predictions into steering and throttle commands for the RC controller.")
 
 
 if __name__ == "__main__":
