@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Iterable, List, Tuple
-
-import numpy as np
+from typing import List
 
 
 def list_image_files(data_dir: Path) -> List[Path]:
@@ -13,23 +11,21 @@ def list_image_files(data_dir: Path) -> List[Path]:
     if not data_dir.exists():
         raise FileNotFoundError(f"Data directory was not found: {data_dir}")
 
-    files = [p for p in data_dir.rglob("*") if p.is_file() and p.suffix.lower() in {".png", ".jpg", ".jpeg"}]
+    files = [
+        p for p in data_dir.rglob("*")
+        if p.is_file() and p.suffix.lower() in {".png", ".jpg", ".jpeg"}
+    ]
     return sorted(files)
 
 
 def load_labels(label_file: Path) -> dict:
-    """Load a simple CSV label file in the form: image_path,steering,throttle.
-
-    This placeholder expects a structured dataset and is intentionally simple.
-    Real Donkey Car datasets typically use the native record format generated
-    by the data collection tool and can be converted as needed.
-    """
+    """Load a simple CSV label file in the form: image_path,steering,throttle."""
     labels: dict = {}
     if not label_file.exists():
         return labels
 
     with label_file.open("r", encoding="utf-8") as handle:
-        next(handle, None)  # Skip header if present.
+        next(handle, None)
         for line in handle:
             parts = [p.strip() for p in line.strip().split(",")]
             if len(parts) < 3:

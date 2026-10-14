@@ -8,13 +8,7 @@ import tensorflow as tf
 
 
 def build_model(image_shape: Tuple[int, int, int] = (120, 160, 3)) -> tf.keras.Model:
-    """Build a lightweight CNN for steering and throttle prediction.
-
-    This is a practical starting point for imitation learning, derived from
-    the image-to-control pattern used in Donkey Car tutorials. It is meant to
-    be extended with real preprocessing, data augmentation, and tuned output
-    layers for the project hardware.
-    """
+    """Build a lightweight CNN for steering and throttle prediction."""
     inputs = tf.keras.Input(shape=image_shape)
 
     x = tf.keras.layers.Rescaling(scale=1.0 / 255.0)(inputs)

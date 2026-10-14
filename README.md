@@ -1,49 +1,65 @@
 # Autonomous Donkey Car
 
-This repository is a practical starting point for a camera-based autonomous RC car project using Donkey Car and TensorFlow.
+A camera-based autonomous RC car project using Donkey Car, Python, and TensorFlow. This repository provides a startup scaffold for collecting driving data, training an imitation-learning model, and preparing for autonomous deployment.
 
-## Current status
+## Project overview
 
-The repository now contains:
-- a basic Python project structure
-- a reusable configuration module
-- a TensorFlow CNN model scaffold for steering and throttle prediction
-- training and driving entry points
-- a lightweight data collection and project layout guide
+This project explores how machine learning connects visual perception with vehicle control. Instead of hardcoding a fixed route, the goal is to collect examples of human driving, train a model from that data, and verify performance on the track.
+
+## Objectives
+
+- Build the RC chassis and onboard electronics integration.
+- Collect driving demonstrations with labeled steering and throttle.
+- Train a TensorFlow model from camera observations.
+- Evaluate autonomous driving performance and iterate on data quality.
+- Document hardware, software, and training workflow.
+
+## Repository structure
+
+- `src/config.py` — default project settings and directories
+- `src/model.py` — TensorFlow CNN model scaffold
+- `src/data_utils.py` — utilities for listing and loading recorded data
+- `src/data_collection.py` — data collection workflow helper
+- `src/train.py` — training entry point
+- `src/drive.py` — drive-time inference scaffold
+- `requirements.txt` — Python dependencies
+- `data/` — raw training data and labels
+- `models/` — trained model outputs
+- `logs/` — logs and diagnostics
 
 ## Quick start
 
-1. Create a virtual environment:
+1. Create a Python virtual environment:
+   ```bash
    python -m venv .venv
    source .venv/bin/activate
+   ```
 
 2. Install dependencies:
+   ```bash
    pip install -r requirements.txt
+   ```
 
-3. Prepare a training dataset in `data/`.
+3. Collect driving data in `data/`.
 
 4. Train the model:
+   ```bash
    python src/train.py
+   ```
 
-5. Run the driving scaffold:
+5. Run the drive scaffold:
+   ```bash
    python src/drive.py
-
-## Project structure
-
-- `src/config.py` - runtime configuration values
-- `src/model.py` - TensorFlow CNN model definition
-- `src/data_utils.py` - dataset helpers
-- `src/data_collection.py` - collection workflow scaffold
-- `src/train.py` - training entry point
-- `src/drive.py` - autonomous driving entry point
-- `data/` - captured examples and labels
-- `models/` - trained model artifacts
-- `logs/` - training logs and diagnostics
+   ```
 
 ## Next steps
 
-- Connect the camera and RC hardware
-- Capture manual driving data
-- Review and clean the dataset
-- Tune the CNN to improve steering stability
-- Integrate real Donkey Car vehicle control on the target hardware
+- Connect and verify camera and motor control hardware.
+- Record training laps with steering and throttle labels.
+- Improve the dataset quality before training.
+- Tune the CNN and training pipeline for better lane following.
+- Integrate the trained model into the vehicle runtime stack.
+
+## Current status
+
+This repository is a working foundation for the project. The code is intentionally scaffolded and needs real hardware, dataset capture, and training tuning before autonomous performance can be verified.

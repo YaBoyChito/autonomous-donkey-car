@@ -2,21 +2,12 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-
 from config import DEFAULT_CONFIG
 from model import build_model
 
 
 def train_model() -> None:
-    """Placeholder but realistic training entry point.
-
-    The intention is to keep the workflow aligned with Donkey Car:
-    - collect driving data
-    - label steering/throttle values
-    - load examples into a TensorFlow model
-    - save model weights for deployment
-    """
+    """Training entry point for the project."""
     data_dir = DEFAULT_CONFIG.data_dir
     models_dir = DEFAULT_CONFIG.models_dir
     models_dir.mkdir(parents=True, exist_ok=True)
